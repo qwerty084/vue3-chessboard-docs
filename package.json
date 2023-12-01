@@ -1,0 +1,32 @@
+{
+  "name": "vue3-chessboard-docs",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Documentation for vue3-chessboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "preview": "vitepress preview src",
+    "format": "prettier --write src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwerty084/vue3-chessboard-docs.git"
+  },
+  "author": "Luca Hendrik Helms",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qwerty084/vue3-chessboard-docs/issues"
+  },
+  "homepage": "https://github.com/qwerty084/vue3-chessboard-docs#readme",
+  "devDependencies": {
+    "prettier": "^3.1.0",
+    "vitepress": "^1.0.0-rc.31"
+  },
+  "dependencies": {
+    "vue3-chessboard": "^1.2.4"
+  }
+}
