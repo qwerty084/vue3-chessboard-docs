@@ -7,9 +7,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vitepress dev src",
-    "build": "vitepress build src --base=/vue3-chessboard-docs/",
-    "preview": "vitepress preview src",
+    "dev": "cp node_modules/stockfish.js/stockfish.* src/public && vitepress dev src",
+    "build": "cp node_modules/stockfish.js/stockfish.* src/public && vitepress build src --base=/vue3-chessboard-docs/",
+    "preview": "cp node_modules/stockfish.js/stockfish.* src/public && vitepress preview src",
     "format": "prettier --write src/"
   },
   "repository": {
