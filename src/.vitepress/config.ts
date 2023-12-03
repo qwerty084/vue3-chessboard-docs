@@ -33,7 +33,13 @@ export default {
       },
       {
         text: 'Engines',
-        items: [{ text: 'Play vs Stockfish', link: '/stockfish' }],
+        items: [
+          { text: 'Play vs Stockfish', link: '/stockfish' },
+          {
+            text: 'Displaying Engine moves',
+            link: '/stockfish-moves',
+          },
+        ],
       },
       {
         text: 'Contribute',

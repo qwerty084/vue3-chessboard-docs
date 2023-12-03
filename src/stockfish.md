@@ -1,6 +1,5 @@
 <script setup>
 import EngineExample from "./EngineExample.vue";
-import EngineArrowExample from "./EngineArrowExample.vue";
 </script>
 
 # Engines
@@ -19,7 +18,7 @@ There is also [stockfish.wasm](https://github.com/lichess-org/stockfish.wasm) wh
 
 vue3-chessboard does not ship with engine support out of the box, but its pretty easy to add to the board, since there are methods for drawing/hinting moves (`drawMove`) and also to make moves programatically (`move`).
 
-In this example [stockfish.js](https://github.com/lichess-org/stockfish.js) by [Lichess](lichess.org) is used.
+In this example [stockfish.js](https://github.com/lichess-org/stockfish.js) by [Lichess](https://lichess.org) is used.
 
 It uses a Wasm compiled version of stockfish if the browser supports it and a JavaScript implementation as a fallback for legacy browsers.
 To keep the UI responsive we are running Stockfish in a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker).
@@ -56,7 +55,7 @@ Copy-Item -Path .\public\stockfish.* -Destination .\public\destination_directory
 
 :::
 
-### Engine Class
+### Engine Communication
 
 Now we create a class for reading the engine output and forwarding the info like the best move to the board.
 
@@ -228,32 +227,17 @@ Now we create a vue component and import our new class.
 ::: code-group
 
 ```vue [JavaScript]
-<script setup>
+<script>
 import { TheChessboard } from 'vue3-chessboard';
-import 'vue3-chessboard/style.css';
-
-function handleCheckmate(isMated) {
-  alert(`${isMated} is mated`);
-}
-</script>
-
-<template>
-  <TheChessboard @checkmate="handleCheckmate" />
-</template>
-```
-
-```vue [TypeScript]
-<script setup lang="ts">
-import { TheChessboard, type BoardApi } from 'vue3-chessboard';
 import { Engine } from './Engine';
 
-let boardAPI: BoardApi | undefined;
-let EngineC: Engine | undefined;
+let boardAPI;
+let engine;
 
 function handleBoardCreated(boardApi: BoardApi) {
   boardAPI = boardApi;
 
-  EngineC = new Engine(boardApi);
+  engine = new Engine(boardApi);
 }
 
 function handleMove() {
@@ -267,7 +251,36 @@ function handleMove() {
     }
   });
 
-  EngineC?.sendPosition(moves.join(' '));
+  engine?.sendPosition(moves.join(' '));
+}
+```
+
+```vue [TypeScript]
+<script setup lang="ts">
+import { TheChessboard, type BoardApi } from 'vue3-chessboard';
+import { Engine } from './Engine';
+
+let boardAPI: BoardApi | undefined;
+let engine: Engine | undefined;
+
+function handleBoardCreated(boardApi: BoardApi) {
+  boardAPI = boardApi;
+
+  engine = new Engine(boardApi);
+}
+
+function handleMove() {
+  const history = boardAPI.getHistory(true);
+
+  const moves = history.map((move) => {
+    if (typeof move === 'object') {
+      return move.lan;
+    } else {
+      return move;
+    }
+  });
+
+  engine?.sendPosition(moves.join(' '));
 }
 </script>
 

@@ -13,26 +13,3 @@ let boardAPI: BoardApi | undefined;
   </section>
   <TheChessboard @board-created="(api) => (boardAPI = api)" />
 </template>
-
-<style scoped>
-.sect {
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 3%;
-}
-.button {
-  border-radius: 4px;
-  padding: 0 12px;
-  letter-spacing: 0.8px;
-  line-height: 36px;
-  font-size: 13px;
-  font-weight: 500;
-  border: 1px solid #333;
-  transition: background-color 0.25s;
-  cursor: pointer;
-}
-.dark .button {
-  border: 1px solid #fff;
-}
-</style>

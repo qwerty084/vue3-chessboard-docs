@@ -3,28 +3,12 @@ import { TheChessboard, type BoardApi } from 'vue3-chessboard';
 import { Engine } from './Engine';
 
 let boardAPI: BoardApi | undefined;
-let EngineC: Engine | undefined;
-let boardConfig = {
-  events: {
-    // select: () => {
-    //   if (EngineC.bestMove) {
-    //     boardAPI?.drawMove(
-    //       EngineC.bestMove.slice(0, 2),
-    //       EngineC.bestMove.slice(2, 4),
-    //       'paleBlue'
-    //     );
-    //   }
-    // },
-    // move: () => {
-    //   boardAPI.hideMoves();
-    // },
-  },
-};
+let engine: Engine | undefined;
 
 function handleBoardCreated(boardApi: BoardApi) {
   boardAPI = boardApi;
 
-  EngineC = new Engine(boardApi);
+  engine = new Engine(boardApi);
 }
 
 function handleMove() {
@@ -38,15 +22,25 @@ function handleMove() {
     }
   });
 
-  EngineC?.sendPosition(moves.join(' '));
+  engine?.sendPosition(moves.join(' '));
 }
 </script>
 
 <template>
+  <div class="btn-container">
+    <button class="button" @click="boardAPI?.resetBoard">Reset</button>
+  </div>
   <TheChessboard
     @board-created="handleBoardCreated"
     @move="handleMove"
-    :board-config="boardConfig"
     :player-color="'white'"
   />
 </template>
+
+<style scoped>
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+</style>

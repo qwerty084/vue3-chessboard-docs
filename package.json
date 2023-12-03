@@ -27,6 +27,7 @@
     "vitepress": "^1.0.0-rc.31"
   },
   "dependencies": {
+    "stockfish.js": "^10.0.2",
     "vue3-chessboard": "^1.2.4"
   }
 }
