@@ -7,7 +7,7 @@ let engine: Engine | undefined;
 let boardConfig = {
   events: {
     select: () => {
-      if (engine.bestMove) {
+      if (engine?.bestMove) {
         boardAPI?.drawMove(
           engine.bestMove.slice(0, 2) as SquareKey,
           engine.bestMove.slice(2, 4) as SquareKey,
@@ -16,7 +16,7 @@ let boardConfig = {
       }
     },
     move: () => {
-      boardAPI.hideMoves();
+      boardAPI?.hideMoves();
     },
   },
 };
@@ -28,9 +28,9 @@ function handleBoardCreated(boardApi: BoardApi) {
 }
 
 function handleMove() {
-  const history = boardAPI.getHistory(true);
+  const history = boardAPI?.getHistory(true);
 
-  const moves = history.map((move) => {
+  const moves = history?.map((move) => {
     if (typeof move === 'object') {
       return move.lan;
     } else {
@@ -38,7 +38,9 @@ function handleMove() {
     }
   });
 
-  engine?.sendPosition(moves.join(' '));
+  if (moves) {
+    engine?.sendPosition(moves.join(' '));
+  }
 }
 </script>
 

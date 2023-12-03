@@ -1,9 +1,8 @@
-import { type BoardApi } from 'vue3-chessboard';
-import { SquareKey } from 'vue3-chessboard';
+import { type BoardApi, type SquareKey } from 'vue3-chessboard';
 
 export class Engine {
   private stockfish: Worker | undefined;
-  private boardApi: BoardApi | undefined;
+  private boardApi: BoardApi;
   public bestMove: string | null;
   public engineName: string | null;
 
@@ -25,13 +24,13 @@ export class Engine {
   }
 
   private setupListeners(): void {
-    this.stockfish.addEventListener('message', (data) =>
+    this.stockfish?.addEventListener('message', (data) =>
       this.handleEngineStdout(data),
     );
 
-    this.stockfish.addEventListener('error', (err) => console.error(err));
+    this.stockfish?.addEventListener('error', (err) => console.error(err));
 
-    this.stockfish.addEventListener('messageerror', (err) =>
+    this.stockfish?.addEventListener('messageerror', (err) =>
       console.error(err),
     );
   }
@@ -43,13 +42,13 @@ export class Engine {
       this.setOption('UCI_AnalyseMode', 'true');
       this.setOption('Analysis Contempt', 'Off');
 
-      this.stockfish.postMessage('ucinewgame');
-      this.stockfish.postMessage('isready');
+      this.stockfish?.postMessage('ucinewgame');
+      this.stockfish?.postMessage('isready');
       return;
     }
 
     if (uciStringSplitted[0] === 'readyok') {
-      this.stockfish.postMessage('go movetime 1000');
+      this.stockfish?.postMessage('go movetime 1000');
       return;
     }
 
@@ -64,11 +63,11 @@ export class Engine {
   }
 
   private setOption(name: string, value: string): void {
-    this.stockfish.postMessage(`setoption name ${name} value ${value}`);
+    this.stockfish?.postMessage(`setoption name ${name} value ${value}`);
   }
 
   public sendPosition(position: string) {
-    this.stockfish.postMessage(`position startpos moves ${position}`);
-    this.stockfish.postMessage('go movetime 2000');
+    this.stockfish?.postMessage(`position startpos moves ${position}`);
+    this.stockfish?.postMessage('go movetime 2000');
   }
 }

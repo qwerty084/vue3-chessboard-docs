@@ -12,9 +12,9 @@ function handleBoardCreated(boardApi: BoardApi) {
 }
 
 function handleMove() {
-  const history = boardAPI.getHistory(true);
+  const history = boardAPI?.getHistory(true);
 
-  const moves = history.map((move) => {
+  const moves = history?.map((move) => {
     if (typeof move === 'object') {
       return move.lan;
     } else {
@@ -22,7 +22,9 @@ function handleMove() {
     }
   });
 
-  engine?.sendPosition(moves.join(' '));
+  if (moves) {
+    engine?.sendPosition(moves.join(' '));
+  }
 }
 </script>
 

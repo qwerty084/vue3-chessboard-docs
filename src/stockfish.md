@@ -4,6 +4,10 @@ import EngineExample from "./EngineExample.vue";
 
 # Engines
 
+::: warning
+This section is WIP, some examples may not be fully functional at this time.
+:::
+
 ## Play vs Stockfish
 
 You play vs Stockfish as white. Make your first move!
@@ -50,7 +54,7 @@ cp node_modules/stockfish.js/stockfish.* public
 ```
 
 ```Powershell
-Copy-Item -Path .\public\stockfish.* -Destination .\public\destination_directory
+Copy-Item -Path .\node_modules\stockfish.js\stockfish.* -Destination .\public\
 ```
 
 :::
@@ -61,7 +65,7 @@ Now we create a class for reading the engine output and forwarding the info like
 
 ::: code-group
 
-```js [JavaScript]
+```js [Engine.js]
 export class Engine {
   private stockfish;
   private boardApi;
@@ -138,7 +142,7 @@ export class Engine {
 }
 ```
 
-```ts [TypeScript]
+```ts [Engine.ts]
 import { type BoardApi } from 'vue3-chessboard';
 import { SquareKey } from 'vue3-chessboard';
 
@@ -227,7 +231,7 @@ Now we create a vue component and import our new class.
 ::: code-group
 
 ```vue [JavaScript]
-<script>
+<script setup>
 import { TheChessboard } from 'vue3-chessboard';
 import { Engine } from './Engine';
 
@@ -241,9 +245,9 @@ function handleBoardCreated(boardApi: BoardApi) {
 }
 
 function handleMove() {
-  const history = boardAPI.getHistory(true);
+  const history = boardAPI?.getHistory(true);
 
-  const moves = history.map((move) => {
+  const moves = history?.map((move) => {
     if (typeof move === 'object') {
       return move.lan;
     } else {
@@ -251,8 +255,19 @@ function handleMove() {
     }
   });
 
-  engine?.sendPosition(moves.join(' '));
+  if (moves) {
+    engine?.sendPosition(moves.join(' '));
+  }
 }
+</script>
+
+<template>
+  <TheChessboard
+    @board-created="handleBoardCreated"
+    @move="handleMove"
+    :player-color="'white'"
+  />
+</template>
 ```
 
 ```vue [TypeScript]
@@ -270,9 +285,9 @@ function handleBoardCreated(boardApi: BoardApi) {
 }
 
 function handleMove() {
-  const history = boardAPI.getHistory(true);
+  const history = boardAPI?.getHistory(true);
 
-  const moves = history.map((move) => {
+  const moves = history?.map((move) => {
     if (typeof move === 'object') {
       return move.lan;
     } else {
@@ -280,7 +295,9 @@ function handleMove() {
     }
   });
 
-  engine?.sendPosition(moves.join(' '));
+  if (moves) {
+    engine?.sendPosition(moves.join(' '));
+  }
 }
 </script>
 

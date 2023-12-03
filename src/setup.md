@@ -30,7 +30,7 @@ cp node_modules/stockfish.js/stockfish.* public
 ```
 
 ```Powershell
-Copy-Item -Path .\public\stockfish.* -Destination .\public\destination_directory
+Copy-Item -Path .\node_modules\stockfish.js\stockfish.* -Destination .\public\
 ```
 
 ## Creating a class for engine/board communication
