@@ -32,6 +32,6 @@
   },
   "dependencies": {
     "stockfish.js": "^10.0.2",
-    "vue3-chessboard": "^1.2.4"
+    "vue3-chessboard": "^1.3.2"
   }
 }

@@ -9,9 +9,9 @@ const versionNumber = ref("");
 
 function setSvgPath() {
   if (theme.isDark.value) {
-    svgPath.value = '/github-mark-white.svg';
+    svgPath.value = '/vue3-chessboard-docs/github-mark-white.svg';
   } else {
-    svgPath.value = '/github-mark.svg';
+    svgPath.value = '/vue3-chessboard-docs/github-mark.svg';
   }
 }
 
