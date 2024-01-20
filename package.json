@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/node": "^20.10.3",
     "prettier": "^3.2.2",
-    "vitepress": "^1.0.0-rc.31"
+    "vitepress": "^1.0.0-rc.39"
   },
   "dependencies": {
     "stockfish.js": "^10.0.2",
