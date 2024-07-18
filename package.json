@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/qwerty084/vue3-chessboard-docs#readme",
   "devDependencies": {
-    "@types/node": "^20.10.3",
+    "@types/node": "^20.14.11",
     "prettier": "^3.2.2",
     "vitepress": "^1.0.0-rc.31"
   },
