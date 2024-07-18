@@ -4,10 +4,6 @@ import EngineArrowExample from "./EngineArrowExample.vue";
 
 # Displaying Engine Moves
 
-::: warning
-This section is WIP, some examples may not be fully functional at this time.
-:::
-
 In this example you can see a hint for the best move provided by the engine.
 
 If you have not read "Play vs Stockfish" please do so to get started, with installing and setting up the requirements.

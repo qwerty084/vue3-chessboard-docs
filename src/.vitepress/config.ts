@@ -32,7 +32,7 @@ export default {
         items: [{ text: 'API', link: '/board-api' }],
       },
       {
-        text: 'Engines (WIP)',
+        text: 'Engines',
         items: [
           { text: 'Play vs Stockfish', link: '/stockfish' },
           {

@@ -4,10 +4,6 @@ import EngineExample from "./EngineExample.vue";
 
 # Engines
 
-::: warning
-This section is WIP, some examples may not be fully functional at this time.
-:::
-
 ## Play vs Stockfish
 
 You play vs Stockfish as white. Make your first move!
@@ -16,7 +12,7 @@ You play vs Stockfish as white. Make your first move!
 
 In this example we can play vs Stockfish using [stockfish.js](https://github.com/lichess-org/stockfish.js), which uses either a webassembly or javascript implementation depending on the browser.
 
-There is also [stockfish.wasm](https://github.com/lichess-org/stockfish.wasm) which is a stronger version, but it requires settings some http headers which is currently not possible with GitHub Pages.
+There is also [stockfish.wasm](https://github.com/lichess-org/stockfish.wasm) which is a stronger version, but it requires setting some HTTP headers which is currently not possible with GitHub Pages.
 
 ## Setup
 
