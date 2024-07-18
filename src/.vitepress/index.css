@@ -83,39 +83,35 @@ coords.files {
   gap: 3%;
 }
 
-.button {
+.main .button {
   border-radius: 4px;
   padding: 0 12px;
   letter-spacing: 0.8px;
   line-height: 36px;
   font-size: 13px;
   font-weight: 500;
-  border: 1px solid #333;
+  border: 1px solid #3c3c43;
   transition: background-color 0.25s;
   cursor: pointer;
+  color: #3c3c43;
+}
+
+.dark .main .button {
   color: #fff;
-}
-
-.dark .button {
   border: 1px solid #fff;
-  color: inherit;
 }
 
-.buttons .activated {
-  background-color: #888;
+.main .buttons .activated {
+  background-color: #999;
 }
 
-.buttons button {
+.main .buttons button {
   border-radius: 5px;
   margin: 5px;
   padding: 5px;
-  border: 1px solid #333;
+  border: 1px solid #3c3c43;
 }
 
-.dark .buttons button {
-  background-color: #888;
-}
-
-.dark .buttons .activated {
-  background-color: #555;
+.dark .main .buttons .activated {
+  background-color: #999;
 }
