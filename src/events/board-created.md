@@ -13,7 +13,7 @@ defineEmits<{
 }>();
 ```
 
-<p>Full reference of all methods: <a href="/board-api.html">Board API Docs</a> | <a href="https://github.com/qwerty084/vue3-chessboard/blob/main/src/classes/BoardApi.ts">Source Code</a></p>
+Full reference of all methods: [Board API Docs](/board-api) | [Source Code](https://github.com/qwerty084/vue3-chessboard/blob/main/src/classes/BoardApi.ts)
 
 ## Example
 
