@@ -240,8 +240,16 @@ setPosition(fen: string): void;
 /**
  * puts a piece on a given square on the board
  * returns true on success, else false
+ * Caution: since v1.4.0, outside free mode this erases the game history, the edited position becomes the starting position
  */
 putPiece(piece: Piece, square: Square): boolean;
+
+/**
+ * removes a piece from the board
+ * Caution: since v1.4.0, this erases the game history, the edited position becomes the starting position
+ * @param square - The square where the piece is located.
+ */
+removePiece(square: Square): void;
 
 /**
  * removes all pieces from the board
