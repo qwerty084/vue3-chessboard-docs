@@ -144,6 +144,10 @@ getPossibleMoves(): Map<Key, Key[]> | undefined;
 getCurrentTurnNumber(): number;
 
 /**
+ * Returns the current ply number, calculated from the move number in the FEN. For a game loaded
+ * from a custom FEN, this number includes the moves played before that FEN, so it can be larger
+ * than `getHistory().length`. Use `getHistory().length` for the number of moves since the starting
+ * position.
  *
  * @returns the current ply number
  * @example e4 e5 Nf3 -> ply number is 3
@@ -290,8 +294,10 @@ setConfig(config: BoardConfig, fillDefaults = false): void;
 /**
  * Views the position at the given ply number in the game's history.
  *
- * @param ply - the ply number of the position to be viewed, where 0 is the initial position, 1 is
- * after white's first move, 2 is after black's first move and so on.
+ * @param ply - the index of the position to view in this game's history. 0 is the starting
+ * position, 1 is the position after the first move, and `getHistory().length` is the current
+ * position. The index counts from the starting position even for a game loaded from a custom FEN,
+ * so it can differ from `getCurrentPlyNumber()`.
  */
 viewHistory(ply: number): void;
 
