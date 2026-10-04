@@ -121,6 +121,7 @@ export class Engine {
           this.boardApi.move({
             from: this.bestMove.slice(0, 2),
             to: this.bestMove.slice(2, 4),
+            promotion: this.bestMove[4] || undefined,
           });
         }
       }
@@ -140,7 +141,7 @@ export class Engine {
 
 ```ts [Engine.ts]
 import { type BoardApi } from 'vue3-chessboard';
-import { SquareKey } from 'vue3-chessboard';
+import { type Promotion, SquareKey } from 'vue3-chessboard';
 
 export class Engine {
   private stockfish: Worker | undefined;
@@ -201,6 +202,7 @@ export class Engine {
           this.boardApi.move({
             from: this.bestMove.slice(0, 2) as SquareKey,
             to: this.bestMove.slice(2, 4) as SquareKey,
+            promotion: (this.bestMove[4] || undefined) as Promotion | undefined,
           });
         }
       }
